@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FF PREMIUM SERVICE</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#07040e;color:white;font-family:Arial,sans-serif;
+  background-image:
+    radial-gradient(circle at 20% 10%,#5000a544,transparent 35%),
+    radial-gradient(circle at 90% 30%,#a000ff33,transparent 35%),
+    linear-gradient(180deg,#080410,#140522,#080410);
+}
+button{cursor:pointer;border:none;color:white;font-weight:bold}
+.topbar{
+ display:flex;align-items:center;justify-content:space-between;
+ flex-wrap:wrap;padding:15px;background:#08050edb;
+ border-bottom:2px solid #b500ff;gap:10px
+}
+.brand{font-size:24px;font-weight:900;color:#fff}
+.brand span{color:#ffd500}
+.crown{color:#ffd700;font-size:30px}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav button{
+ background:linear-gradient(90deg,#7400ff,#c000ff);
+ padding:12px 20px;border-radius:30px;
+ box-shadow:0 0 15px #9b00ff66
+}
+.hero{
+ text-align:center;padding:40px 10px 30px;
+ background:radial-gradient(ellipse,#5100a566,transparent 70%);
+ border-bottom:2px solid #a600ff
+}
+.hero .characters{font-size:55px;margin-bottom:12px}
+.hero h1{
+ font-size:clamp(38px,8vw,75px);font-weight:1000;
+ line-height:1;color:#fff;
+ text-shadow:0 0 15px #a500ff,0 0 35px #6800ff
+}
+.hero h1 span{color:#ffd500}
+.hero h2{font-size:30px;color:#ddd;margin-top:5px}
+.hero p{color:#e0baff;margin-top:12px;font-weight:bold}
+.section-title{
+ text-align:center;font-size:27px;font-weight:900;
+ color:#e7baff;margin:24px 5px;
+ text-shadow:0 0 15px #9d00ff
+}
+.shop{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:12px;max-width:1100px;margin:auto;padding:12px
+}
+.card{
+ overflow:hidden;position:relative;text-align:center;min-width:0;
+ border:2px solid #bd38ff;border-radius:18px;
+ background:linear-gradient(180deg,#190c2b,#080711);
+ box-shadow:0 0 10px #9c00ff66,inset 0 0 15px #6e00ff22
+}
+.art{
+ height:120px;display:flex;align-items:center;justify-content:center;
+ font-size:65px;position:relative;overflow:hidden;
+ background:radial-gradient(circle,#7700ff55,#10091e 65%,#080711);
+ border-bottom:1px solid #902cff
+}
+.art:before{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(135deg,transparent,#a900ff22,transparent)
+}
+.art span{filter:drop-shadow(0 0 12px #b500ff);z-index:1}
+.card h3{font-size:16px;margin:10px 3px 5px}
+.sub{font-size:12px;color:#ddd;margin:5px}
+.price{color:#ffe000;font-size:22px;font-weight:900;margin:8px}
+.buy{
+ background:linear-gradient(90deg,#7900ff,#d000ff);
+ border-radius:25px;padding:10px 8px;width:85%;
+ margin:8px auto 12px;box-shadow:0 0 12px #b000ff77
+}
+.buy.free{background:linear-gradient(90deg,#00a83b,#00ed56)}
+.tools{
+ display:grid;grid-template-columns:1.2fr 1fr 1fr;
+ gap:12px;padding:12px;max-width:1100px;margin:auto
+}
+.tool{
+ border:2px solid #a82bff;border-radius:16px;
+ background:linear-gradient(160deg,#170a27,#070711);
+ padding:13px;box-shadow:0 0 12px #9b00ff44
+}
+.tool h3{color:#ffe000;font-size:16px;margin-bottom:12px}
+.slider-row{font-size:12px;margin:9px 0}
+.slider-row div{display:flex;justify-content:space-between}
+input[type=range]{width:100%;accent-color:#bc00ff}
+.tool button{
+ background:linear-gradient(90deg,#7500ff,#bd00ff);
+ border-radius:20px;padding:9px;margin-top:10px;width:100%
+}
+.tool-art{text-align:center;font-size:65px;margin:15px 0}
+.tool p{font-size:13px;line-height:1.5;color:#ddd;text-align:center}
+footer{
+ text-align:center;padding:30px 10px;margin-top:20px;
+ background:radial-gradient(ellipse,#6500a544,transparent);
+ border-top:1px solid #9f00ff
+}
+footer .logo{font-size:35px;color:#ffd500;font-weight:900}
+footer p{margin:7px;color:#ddd}
+.hidden{display:none}
+.payment-box,.download-box{
+ max-width:500px;margin:15px auto;padding:18px;
+ border:2px solid #a82bff;border-radius:16px;
+ background:linear-gradient(160deg,#170a27,#070711);
+ box-shadow:0 0 12px #9b00ff44;text-align:center
+}
+.payment-box h3,.download-box h3{color:#ffe000;margin-bottom:12px}
+.payment-box p,.download-box p{color:#ddd;margin:9px 0;line-height:1.5}
+.payment-box button,.download-box button{
+ background:linear-gradient(90deg,#7500ff,#bd00ff);
+ border-radius:20px;padding:10px 16px;margin:8px
+}
+.payment-box input{
+ width:90%;padding:12px;margin:8px 0;border-radius:8px;
+ border:1px solid #a82bff;background:#080410;color:white
+}
+#utrStatus{color:#ffe000;font-weight:bold;margin-top:15px;line-height:1.6}
+@media(max-width:500px){
+ .brand{font-size:19px}
+ .nav button{padding:10px;font-size:11px}
+ .hero{padding:25px 5px}
+ .hero .characters{font-size:40px}
+ .hero h2{font-size:23px}
+ .section-title{font-size:21px}
+ .shop{gap:7px;padding:7px}
+ .art{height:85px;font-size:42px}
+ .card h3{font-size:11px}
+ .sub{font-size:9px}
+ .price{font-size:15px}
+ .buy{font-size:10px;padding:8px 2px;width:94%}
+ .tools{gap:6px;padding:6px}
+ .tool{padding:8px}
+ .tool h3{font-size:11px}
+ .tool p{font-size:10px}
+ .tool-art{font-size:38px}
+ .slider-row{font-size:9px}
+ .tool button{font-size:9px;padding:8px 2px}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+ <div class="brand"><span class="crown">♛</span> FF <span>PREMIUM</span>
+ <div style="font-size:11px;color:white">FF PREMIUM SERVICE</div></div>
+ <div class="nav">
+  <button onclick="goShop()">⌂ SHOP</button>
+  <button onclick="goTools()">⚒ FREE TOOLS</button>
+  <button onclick="goDownloads()">📥 DOWNLOADS</button>
+ </div>
+</header>
+
+<div class="hero">
+ <div class="characters">🥷🏻 ⚡ 👑 ⚡ 🥷🏻</div>
+ <h1>FF <span>PREMIUM</span></h1>
+ <h2>SERVICE</h2>
+ <p>Best Gaming Tools & Settings</p>
+</div>
+
+<h2 class="section-title" id="shopTitle">👑 PREMIUM SHOP 👑</h2>
+<div class="shop" id="shop">
+
+<div class="card">
+ <div class="art"><span>🎯</span></div>
+ <h3>Best Sensitivity</h3>
+ <div class="sub">Aim Like a Pro</div>
+ <div class="price">FREE ₹0</div>
+ <button class="buy free" onclick="goTools()">➜ OPEN NOW</button>
+</div>
+
+<div class="card">
+ <div class="art"><span>📱</span></div>
+ <h3>Perfect DPI</h3>
+ <div class="sub">Boost Your Game</div>
+ <div class="price">₹49</div>
+ <button class="buy" onclick="buy('Perfect DPI',49)">🛒 BUY NOW</button>
+</div>
+
+<div class="card">
+ <div class="art"><span>🎯</span></div>
+ <h3>Headshot APK File</h3>
+ <div class="sub">Training & Guide</div>
+ <div class="price">₹399</div>
+ <button class="buy" onclick="buy('Headshot APK File',399)">🛒 BUY NOW</button>
+</div>
+
+<div class="card">
+ <div class="art"><span>🎮</span></div>
+ <h3>Free Sensitivity</h3>
+ <div class="sub">Best Settings</div>
+ <div class="price">FREE ₹0</div>
+ <button class="buy free" onclick="goTools()">➜ OPEN NOW</button>
+</div>
+
+<div class="card">
+ <div class="art"><span>🔴</span></div>
+ <h3>Macro Button</h3>
+ <div class="sub">Button Layout Guide</div>
+ <div class="price">₹99</div>
+ <button class="buy" onclick="buy('Macro Button',99)">🛒 BUY NOW</button>
+</div>
+
+<div class="card">
+ <div class="art"><span>👑</span></div>
+ <h3>Pro Sensitivity</h3>
+ <div class="sub">Pro Gaming Settings</div>
+ <div class="price">₹199</div>
+ <button class="buy" onclick="buy('Pro Sensitivity',199)">🛒 BUY NOW</button>
+</div>
+
+</div>
+
+<div id="paymentSection" class="hidden">
+ <h2 class="section-title">💳 COMPLETE PAYMENT</h2>
+ <div class="payment-box">
+  <h3 id="paymentProduct">Product</h3>
+  <p id="paymentAmount">Amount</p>
+  <p>UPI ID: <b>shambhu30@fam</b></p>
+  <button onclick="openUPI()">💳 PAY NOW</button>
+  <hr style="border:0;border-top:1px solid #902cff;margin:15px 0">
+  <h3>SUBMIT UTR</h3>
+  <p>पेमेंट करने के बाद अपना UTR Number डालें।</p>
+  <input type="text" id="utrInput" placeholder="Enter UTR Number"
+   maxlength="30" autocomplete="off">
+  <br>
+  <button onclick="submitUTR()">SUBMIT UTR</button>
+  <p id="utrStatus"></p>
+ </div>
+</div>
+
+<h2 class="section-title" id="toolsTitle">⚒ FREE TOOLS ⚒</h2>
+<div class="tools" id="tools">
+<div class="tool">
+ <h3>🎯 Free Sensitivity</h3>
+ <div class="slider-row"><div>General <span id="v1">190</span></div>
+ <input id="r1" type="range" min="0" max="200" value="190" oninput="update('v1',this.value)"></div>
+ <div class="slider-row"><div>Red Dot <span id="v2">185</span></div>
+ <input id="r2" type="range" min="0" max="200" value="185" oninput="update('v2',this.value)"></div>
+ <div class="slider-row"><div>2x Scope <span id="v3">180</span></div>
+ <input id="r3" type="range" min="0" max="200" value="180" oninput="update('v3',this.value)"></div>
+ <div class="slider-row"><div>4x Scope <span id="v4">170</span></div>
+ <input id="r4" type="range" min="0" max="200" value="170" oninput="update('v4',this.value)"></div>
+ <div class="slider-row"><div>Sniper Scope <span id="v5">160</span></div>
+ <input id="r5" type="range" min="0" max="200" value="160" oninput="update('v5',this.value)"></div>
+ <div class="slider-row"><div>Free Look <span id="v6">150</span></div>
+ <input id="r6" type="range" min="0" max="200" value="150" oninput="update('v6',this.value)"></div>
+ <button onclick="saveSettings()">💾 SAVE SETTINGS</button>
+ <button onclick="loadSettings()">📂 LOAD SETTINGS</button>
+</div>
+
+<div class="tool">
+ <h3>📱 DPI GUIDE</h3>
+ <p>Set the best DPI for your device</p>
+ <div class="tool-art">📱 ⚡</div>
+ <button onclick="alert('DPI Guide: फोन के मॉडल और अपनी सुविधा के अनुसार DPI चुनें। बदलाव से पहले पुरानी सेटिंग नोट करें।')">LEARN MORE ➜</button>
+</div>
+
+<div class="tool">
+ <h3>🎮 MACRO BUTTON</h3>
+ <p>Customize your control layout</p>
+ <div class="tool-art">🎮</div>
+ <button onclick="alert('यह कंट्रोल लेआउट गाइड है। गेम के कंट्रोल्स को अपनी सुविधा के अनुसार सेट करें।')">VIEW GUIDE ➜</button>
+</div>
+</div>
+
+<h2 class="section-title" id="downloadsTitle">📥 MY DOWNLOADS 📥</h2>
+<div class="download-box" id="downloads">
+ <h3>MY DOWNLOADS</h3>
+ <p>तुम्हारे खरीदे हुए प्रोडक्ट यहाँ दिखाए जा सकते हैं।</p>
+ <p>अभी वेबसाइट पर पेमेंट Verify करने या फाइल अपने आप देने की सुविधा जुड़ी नहीं है। पेमेंट की पुष्टि और डाउनलोड लिंक एडमिन से प्राप्त करें।</p>
+</div>
+
+<footer>
+ <div class="logo">♛ FF PREMIUM</div>
+ <p><b>FF PREMIUM SERVICE</b></p>
+ <p>© 2026 All Rights Reserved</p>
+ <p>🎮 Gaming Tools & Settings</p>
+</footer>
+
+<script>
+const MY_UPI="shambhu30@fam";
+const MY_NAME="FF PREMIUM";
+let selectedProduct="";
+let selectedAmount=0;
+
+function goShop(){
+ document.getElementById("shopTitle").scrollIntoView({behavior:"smooth"});
+}
+function goTools(){
+ document.getElementById("toolsTitle").scrollIntoView({behavior:"smooth"});
+}
+function goDownloads(){
+ document.getElementById("downloadsTitle").scrollIntoView({behavior:"smooth"});
+}
+function buy(product,amount){
+ selectedProduct=product;
+ selectedAmount=amount;
+ document.getElementById("paymentProduct").textContent=product;
+ document.getElementById("paymentAmount").textContent="कुल राशि: ₹"+amount;
+ document.getElementById("utrInput").value="";
+ document.getElementById("utrStatus").textContent="";
+ document.getElementById("paymentSection").classList.remove("hidden");
+ document.getElementById("paymentSection").scrollIntoView({behavior:"smooth"});
+}
+function openUPI(){
+ if(!selectedProduct || selectedAmount<=0){
+  alert("पहले कोई प्रोडक्ट चुनें।");
+  return;
+ }
+ const link="upi://pay?pa="+encodeURIComponent(MY_UPI)
+ +"&pn="+encodeURIComponent(MY_NAME)
+ +"&am="+selectedAmount+"&cu=INR"
+ +"&tn="+encodeURIComponent(selectedProduct);
+ window.location.href=link;
+}
+function submitUTR(){
+ const utr=document.getElementById("utrInput").value.trim();
+ const status=document.getElementById("utrStatus");
+ if(!selectedProduct){
+  status.textContent="पहले कोई प्रोडक्ट चुनें।";
+  return;
+ }
+ if(!/^[a-zA-Z0-9]{8,30}$/.test(utr)){
+  status.textContent="कृपया सही UTR Number डालें।";
+  return;
+ }
+ status.textContent="PAYMENT APPROVAL PROCESSING — Your payment is under review. Please wait for approval.";
+}
+function update(id,value){
+ document.getElementById(id).textContent=value;
+}
+function saveSettings(){
+ const data={};
+ for(let i=1;i<=6;i++){
+  data["v"+i]=document.getElementById("r"+i).value;
+ }
+ localStorage.setItem("ffpremium_settings",JSON.stringify(data));
+ alert("Settings Saved Successfully!");
+}
+function loadSettings(){
+ const data=localStorage.getItem("ffpremium_settings");
+ if(!data){
+  alert("पहले Save Settings करें!");
+  return;
+ }
+ try{
+  const settings=JSON.parse(data);
+  for(let i=1;i<=6;i++){
+   if(settings["v"+i]!==undefined){
+    document.getElementById("r"+i).value=settings["v"+i];
+    document.getElementById("v"+i).textContent=settings["v"+i];
+   }
+  }
+  alert("Settings Loaded!");
+ }catch(error){
+  alert("Settings Load नहीं हो पाईं।");
+ }
+}
+</script>
+</body>
+</html>
